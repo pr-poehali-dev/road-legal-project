@@ -122,23 +122,57 @@ const Index = () => {
         </div>
       </header>
 
-      <section className="relative py-20 md:py-32 bg-gradient-to-br from-secondary to-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-              Получите в 2 раза больше денег со страховой или верните права
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-              Платите только за результат. Первая консультация бесплатно
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
-                <Icon name="Phone" size={20} className="mr-2" />
-                Бесплатная консультация за 15 минут
-              </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8">
-                Рассчитать компенсацию онлайн
-              </Button>
+      <section className="relative py-20 md:py-32 bg-gradient-to-br from-primary/5 via-secondary to-white overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-5xl mx-auto">
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl border border-primary/10">
+              <div className="flex items-center justify-center gap-2 mb-6">
+                <div className="bg-primary/10 px-4 py-2 rounded-full flex items-center gap-2">
+                  <Icon name="Star" size={20} className="text-primary fill-primary" />
+                  <span className="text-sm font-semibold text-primary">Топ автоюрист 2024</span>
+                </div>
+                <div className="bg-primary/10 px-4 py-2 rounded-full">
+                  <span className="text-sm font-semibold text-primary">5000+ выигранных дел</span>
+                </div>
+              </div>
+              
+              <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight text-center">
+                Получите в <span className="text-primary">2 раза больше</span> со страховой или верните права
+              </h1>
+              <p className="text-xl md:text-2xl text-muted-foreground mb-8 text-center">
+                Платите только за результат. Первая консультация бесплатно
+              </p>
+              
+              <div className="grid md:grid-cols-3 gap-4 mb-8">
+                <div className="bg-secondary/50 rounded-xl p-4 text-center">
+                  <div className="text-3xl font-bold text-primary mb-1">30 мин</div>
+                  <div className="text-sm text-muted-foreground">Выезд на место ДТП</div>
+                </div>
+                <div className="bg-secondary/50 rounded-xl p-4 text-center">
+                  <div className="text-3xl font-bold text-primary mb-1">92%</div>
+                  <div className="text-sm text-muted-foreground">Выигранных дел</div>
+                </div>
+                <div className="bg-secondary/50 rounded-xl p-4 text-center">
+                  <div className="text-3xl font-bold text-primary mb-1">+127%</div>
+                  <div className="text-sm text-muted-foreground">К страховой выплате</div>
+                </div>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 shadow-lg shadow-primary/30">
+                  <Icon name="Phone" size={20} className="mr-2" />
+                  Бесплатная консультация за 15 минут
+                </Button>
+                <Button size="lg" variant="outline" className="text-lg px-8 border-2 border-primary text-primary hover:bg-primary hover:text-white">
+                  <Icon name="Calculator" size={20} className="mr-2" />
+                  Рассчитать компенсацию
+                </Button>
+              </div>
+              
+              <p className="text-center text-sm text-muted-foreground mt-6">
+                ⚡ Ответим в течение 5 минут • 📞 Работаем 24/7 • 🎁 Без предоплаты
+              </p>
             </div>
           </div>
         </div>
@@ -160,26 +194,30 @@ const Index = () => {
             {services.map((service, index) => (
               <Card 
                 key={index} 
-                className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2 hover:border-primary/50"
+                className="hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 hover:border-primary/50 relative overflow-hidden group"
               >
-                <CardHeader>
-                  <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                    <Icon name={service.icon} size={28} className="text-primary" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-all"></div>
+                <CardHeader className="relative">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/70 rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-primary/30">
+                    <Icon name={service.icon} size={32} className="text-white" />
                   </div>
                   <CardTitle className="text-2xl mb-2">{service.title}</CardTitle>
                   <CardDescription className="text-base">{service.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ul className="space-y-3">
+                  <ul className="space-y-3 mb-6">
                     {service.items.map((item, idx) => (
                       <li key={idx} className="flex items-start">
-                        <Icon name="Check" size={20} className="text-primary mr-2 mt-0.5 flex-shrink-0" />
+                        <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center mr-2 mt-0.5 flex-shrink-0">
+                          <Icon name="Check" size={16} className="text-primary" />
+                        </div>
                         <span className="text-sm">{item}</span>
                       </li>
                     ))}
                   </ul>
-                  <Button className="w-full mt-6 bg-primary hover:bg-primary/90">
-                    Подробнее
+                  <Button className="w-full bg-primary hover:bg-primary/90 shadow-md hover:shadow-lg transition-all">
+                    <Icon name="ArrowRight" size={18} className="mr-2" />
+                    Заказать услугу
                   </Button>
                 </CardContent>
               </Card>
@@ -198,9 +236,9 @@ const Index = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {advantages.map((advantage, index) => (
-              <div key={index} className="text-center animate-fade-in">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name={advantage.icon} size={32} className="text-white" />
+              <div key={index} className="text-center group hover:scale-105 transition-transform">
+                <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary/70 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-xl shadow-primary/30 group-hover:shadow-2xl group-hover:shadow-primary/40 transition-all">
+                  <Icon name={advantage.icon} size={36} className="text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-2">{advantage.title}</h3>
                 <p className="text-muted-foreground">{advantage.description}</p>
@@ -222,92 +260,114 @@ const Index = () => {
               </p>
             </div>
 
-            <Card className="border-2">
-              <CardContent className="pt-6">
+            <Card className="border-2 border-primary/20 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary via-primary/70 to-primary"></div>
+              <CardContent className="pt-8">
+                <div className="bg-primary/5 rounded-xl p-4 mb-6 border border-primary/20">
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Icon name="Gift" size={24} className="text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-foreground mb-1">Специальное предложение</h3>
+                      <p className="text-sm text-muted-foreground">При обращении сегодня — бесплатная оценка дела и расчёт компенсации за 15 минут</p>
+                    </div>
+                  </div>
+                </div>
+                
                 <form className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium">
+                      <label htmlFor="name" className="text-sm font-medium flex items-center gap-1">
+                        <Icon name="User" size={16} className="text-primary" />
                         Ваше имя *
                       </label>
                       <Input 
                         id="name" 
                         placeholder="Иван Иванов" 
-                        className="h-12"
+                        className="h-12 border-2 focus:border-primary"
                       />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="phone" className="text-sm font-medium">
+                      <label htmlFor="phone" className="text-sm font-medium flex items-center gap-1">
+                        <Icon name="Phone" size={16} className="text-primary" />
                         Телефон *
                       </label>
                       <Input 
                         id="phone" 
                         type="tel" 
                         placeholder="+7 (999) 123-45-67" 
-                        className="h-12"
+                        className="h-12 border-2 focus:border-primary"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">
+                    <label htmlFor="email" className="text-sm font-medium flex items-center gap-1">
+                      <Icon name="Mail" size={16} className="text-primary" />
                       Email
                     </label>
                     <Input 
                       id="email" 
                       type="email" 
                       placeholder="ivan@example.com" 
-                      className="h-12"
+                      className="h-12 border-2 focus:border-primary"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium">
+                    <label htmlFor="message" className="text-sm font-medium flex items-center gap-1">
+                      <Icon name="MessageSquare" size={16} className="text-primary" />
                       Опишите вашу ситуацию
                     </label>
                     <Textarea 
                       id="message" 
                       placeholder="Расскажите о вашей проблеме..."
                       rows={5}
+                      className="border-2 focus:border-primary"
                     />
                   </div>
 
                   <Button 
                     type="submit" 
                     size="lg" 
-                    className="w-full bg-primary hover:bg-primary/90 text-lg h-14"
+                    className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-lg h-16 shadow-xl shadow-primary/30 hover:shadow-2xl hover:shadow-primary/40 transition-all"
                   >
+                    <Icon name="Sparkles" size={24} className="mr-2" />
                     Узнать сумму компенсации бесплатно
                   </Button>
 
                   <p className="text-sm text-muted-foreground text-center">
-                    Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
+                    🔒 Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
                   </p>
                 </form>
               </CardContent>
             </Card>
 
             <div className="grid md:grid-cols-3 gap-8 mt-16">
-              <div className="text-center">
-                <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Phone" size={24} className="text-primary" />
+              <div className="text-center group hover:scale-105 transition-transform">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/70 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-primary/30 group-hover:shadow-xl group-hover:shadow-primary/40 transition-all">
+                  <Icon name="Phone" size={28} className="text-white" />
                 </div>
                 <h3 className="font-semibold text-lg mb-2">Телефон</h3>
-                <p className="text-muted-foreground">+7 (999) 123-45-67</p>
+                <a href="tel:+79991234567" className="text-primary font-semibold hover:underline">+7 (999) 123-45-67</a>
+                <p className="text-sm text-muted-foreground mt-1">Звоните 24/7</p>
               </div>
-              <div className="text-center">
-                <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Mail" size={24} className="text-primary" />
+              <div className="text-center group hover:scale-105 transition-transform">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/70 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-primary/30 group-hover:shadow-xl group-hover:shadow-primary/40 transition-all">
+                  <Icon name="Mail" size={28} className="text-white" />
                 </div>
                 <h3 className="font-semibold text-lg mb-2">Email</h3>
-                <p className="text-muted-foreground">info@avtourist.ru</p>
+                <a href="mailto:info@avtourist.ru" className="text-primary font-semibold hover:underline">info@avtourist.ru</a>
+                <p className="text-sm text-muted-foreground mt-1">Ответим за 15 минут</p>
               </div>
-              <div className="text-center">
-                <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="MapPin" size={24} className="text-primary" />
+              <div className="text-center group hover:scale-105 transition-transform">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/70 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-primary/30 group-hover:shadow-xl group-hover:shadow-primary/40 transition-all">
+                  <Icon name="MapPin" size={28} className="text-white" />
                 </div>
                 <h3 className="font-semibold text-lg mb-2">Адрес</h3>
-                <p className="text-muted-foreground">г. Москва, ул. Примерная, 1</p>
+                <p className="text-primary font-semibold">г. Москва, ул. Примерная, 1</p>
+                <p className="text-sm text-muted-foreground mt-1">Приём по записи</p>
               </div>
             </div>
           </div>
